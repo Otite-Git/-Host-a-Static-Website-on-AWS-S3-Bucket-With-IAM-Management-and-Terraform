@@ -6,6 +6,7 @@ In this repository you will see a description of the project, low and high level
 
 ## **Website Page**
 
+[www.aws-terrafrom-static-website.s3-website-us-east-1.amazonaws.com/](https://drive.google.com/file/d/1u6HWVjvddFyTgQz88hk9p3l-ed-SWSG0/view?usp=sharing)
 
 ## **Project Overview** 
 
@@ -26,6 +27,11 @@ This project demonstrates how to host a Static Website on AWS, utilising AWS ser
 
 
 ## **Deployment Steps**
+
+### Access keys in AWS IAM
+1. Set up access keys in AWS IAM
+2. Export those access keys in my computer’s terminal
+3. The access key ID and secret access key are important as this is what gives access to uploading, configurating and creating resources over the terminal
 
 ### Visual Studio Code Setup
 1.Go to the Visual Studio Code website and install Visual Studio Code: Depending on what type of OS is being used, Visual Studio Code can be installed downloading the binary files for Windows or macOS.
@@ -69,6 +75,14 @@ Return to the Amazon S3 console with your bucket page open. Choose the Object ta
 You might get a popup that tells you that all files in that folder will be uploaded.
 - Choose Upload
 - S3 will then get to work
+3. Once the files and folder are uploaded into the S3 Bucket it should look like this below:
+![image](https://github.com/user-attachments/assets/2bd4b9d3-5a92-4a97-98aa-b4147193196b)
+
+
+### URL Access: Test the S3 Static web site on the new web browser
+1. Go to the properties tab of S3 bucket and scroll to the end of this page to find Static website hosting options.
+2. Copy the Bucket website endpoint and paste into the new tab of your web browser. It should open the newly created webpage 
+
 
 ## **How to Use**
 
@@ -93,32 +107,31 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## **What problems did I solve by completing this project?**
 
-1. **Scalability:** I was able to effectively Handle varying levels of web traffic efficiently through using AWS services like Auto Scaling and Elastic Load Balancing to automatically adjust the number of running instances based on traffic demand.
- 
-2. **Performance Optimisation:** I solved the problem of slow loading times and handling varying levels of web traffic effciently using AWS services like Auto Scaling and Elastic Load Balancing to automatically adjust the number of running instances based on traffic demand.
+1. **Simplicity:** I was able to effectively to simplift the creation of the hosting of the website through automating the deployment process using Terraform by reducing manual effort and ensures consistency across environments as the deployment of infrastructure and website hosting can be error-prone and time-consuming.
+   
+2. **Infrastructure Management:** Managing infrastructure changes manually can lead to configuration drift and inconsistencies. Using Terraform allows for version-controlled infrastructure management and easy updates.
 
-3. **Database Management:** Using AWS to host WordPress enabled me to effectively manage and optimise the database that supports WordPress through using Amazon RDS for managed MySQL a databases, enabling read replicas for load distribution.
+3. **Security and Access Control:** Incorrectly configured access controls can expose the website or AWS resources to security risks. Terraform configurations can include security best practices, such as setting proper IAM policies and bucket permissions, to enhance security.
 
-4. **High Availability:** I Minimised downtime and ensuring continuous availability by deploying applications across 2 Availability Zones AZ1 & AZ2, using Elastic Load Balancing to distribute traffic, and setting up failover configurations.
-
-5. **Cost Management:** I solved the problem of having high costs by supporting the deployment of a cost effective solution managing and optimising the costs associated with AWS resources. This was achieved through monitoring usage with AWS Cost Explorer, using AWS Budgets to set alerts, and leveraging Reserved Instances and Savings Plans for cost savings.
 
 ## **What issues did I face while working on the project and how did I resolve that issue?**
   
-- **WordPress credentials issues:** I had faced the issue of my WordPress credentials automatically registering through an auto-fill feature generating a strong passsword which I did not record. I solved this issue by firstly deleting the existing EFS RDS and EC2 Instance and creating new EFS RDS and EC2 Instances. Once created, I then SSH'ed into the instance via Amazon Linux where I was to re-nstall the WordPress script which consisted of setting up the WordPress application on an EC2 instance, including Apache, PHP, MySQL, and mounting the Amazon EFS.
+- **Terraform Configuration Errors:** I had faced the issue of Syntax errors and incorrect configuration in Terraform files. I was able to resolve both issues by using Terraform validate and terraform plan commands to check for errors and view changes before applying them.
 
-- **Increasing Costs:** The challenge of increasing cost also became a concern which I was able to resolve thorugh by firstly enabalbing MFA (Multi Factor Authentication) to enhance the security access of my root user account and enable best practice. Through this, I reduced the risk of fraudulent access to my account and using it resulting in high usage cost. Furthermore, I used AWS budgets and Cost Explorer to effectively manage costs by settting alerting and identifying which service was a high usage cost through visibility of the cost usage graph.  
+- **Terraform file setup Error:** Initially when starting the project, I had faced the challenge of my created main.tf file not being picked up or when entering the terraform apply command. I would get an error message stating the file could not be found in my directory despite it being there. I had resolved this issue by creating a new copy of the file and saving it in VS Code ensuring the Terraform logo appeared after it was correctly formatted. I then uploaded it into the directory folder and ran the Terrafrom apply command again. After doing this it had successfully worked.
+ 
 
  ## **What overall lessons did I learn?**
  
-- **AWS Linux and Bash:** This project gave me the ability to increase my skills in AWS Linux and bash as I was required to use the EC2 Instance to install the WordPress script
+- **AWS IAM (Identity and Access Management):** Understanding the role of IAM in securing and managing access to AWS resources. Creating IAM roles and policies to grant necessary permissions for Terraform to manage AWS resources.
 
-- **Networking:** I further my knowledge on Networking through inplementation of tools such as the Internet Gateway. This enabled the resources within the VPC Public Subnet to connect to the internet, and resources within the VPC Private Subnet to connect to the internet via the NAT Gateway. The use of the NAT Gateway enables resources like the EC2 Instances on the Private App Subnet to access the internet and download package updates using 'Sudo Yum update' through SSH'ing into the EC2 instance. So there is a requirement for the EC2 Instance to have access to the internet without external users on the internet gaining access to the EC2 Instance.
+- **Terraform Basics:** Infrastructure as Code (IaC): Understanding how to define and manage infrastructure using code. Terraform Configuration: Learning the syntax and structure of Terraform configuration files (e.g., .tf files).
 
-- **IAM Management and Best Practice:** As part ot IAM Management best practice, I identified that it is not recommended to user a root account for cloud environment creation. Going forward, I increased the acess robustness of my root using account by regularly changing  passwords, using MFA (Mult Factor Authentication), removing access keys to the root account and reducing overall root user account user for sercurity perposes.
+- **AWS S3 for Static Websites:** Static Website Hosting: Configuring S3 buckets to host static content like HTML, CSS, and JavaScript. Bucket Policies: Setting up appropriate bucket policies to allow public access to the website content.
 
--  **IAM User Creation and Best Practice:** Through doing this project, I also identified that going forward, best practice would be to create a new IAM user for myself and only grant required access also setting up a MFA for the new user making this the primary use account going forward. This is not only best practice, but permits the use of defining a boundary of services that I only want to use. For example, am IAM user cannot be charged for a NAT Gateway, if they don't have permissions to configure one in the first place. 
-  
+- **AWS S3 for State Management:** A lesson learnt is that nanaging Terraform state files, especially in a team environment can create confusion in terms of versioning. a Lesson would be to use remote state storage (e.g., AWS S3) with locking (e.g., DynamoDB) to manage state files and avoid conflicts.
+
+
 
 
 
