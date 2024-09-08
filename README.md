@@ -1,8 +1,8 @@
 # 💻Host a Static Website on AWS S3 Bucket with Terraform☁️
 
-Hi! Welcome to my repository containing my AWS Project I've have undertaken as a Cloud enthusiast⚡️:
+Hi! Welcome to my repository containing my AWS Project I've have undertaken as a Cloud expert and enthusiast⚡️:
 
-In this repository you will see a description of the project, low and high level architecture, scripting files and information on other key assets that I have used to develop this project as part of my portfolio and progressive development.
+In this repository you will see a description of the project, low and high level architecture, scripting files and information on other key assets that I have used to develop this project as part of my portfolio.
 
 ## **Website Page**
 
@@ -101,9 +101,6 @@ You might get a popup that tells you that all files in that folder will be uploa
 
 Contributions to this project are welcome! Please fork the repository and submit a pull request with your enhancements
 
-## **License**
-
-This project is licensed under the MIT License - see the LICENSE file for details
 
 ## **What problems did I solve by completing this project?**
 
